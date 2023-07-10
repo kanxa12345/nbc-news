@@ -1,0 +1,109 @@
+header {
+    position: fixed;
+    padding: 15px 0px;
+    background-color: $color2;
+    @include flex-container;
+    z-index: 2;
+    font-size: 20px;
+
+    div.header {
+        @include flex-container(space-between, 95%);
+        gap: 20px;
+
+        nav.navbar {
+            width: 65%;
+
+            ul {
+                list-style-type: none;
+                @include flex-container(space-between);
+
+                li {
+                    a {
+                        text-decoration: none;
+                        color: $color1;
+                        font-weight: 500;
+                        position: relative;
+                        font-size: 0.8em;
+
+                        &:hover::after {
+                            position: absolute;
+                            content: '';
+                            height: 2px;
+                            width: 80%;
+                            background-color: $color3;
+                            bottom: -6px;
+                            left: calc(50% - 40%)
+                        }
+                    }
+                }
+            }
+        }
+
+        div.icons {
+            @include flex-container(space-between, 8%);
+
+            a {
+                text-decoration: none;
+                color: $color1;
+
+                i {
+                    font-size: 0.8em;
+                }
+            }
+        }
+
+        div.hamburger {
+            display: none;
+        }
+    }
+}
+
+@media screen and (max-width: 992px) {
+    header {
+        font-size: 18px;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    header {
+        div.header {
+            position: relative;
+            nav.navbar {
+                display: none;
+            }
+            nav.navbargo{
+                position: absolute;
+                right: 0;
+                top: 40px;
+                display: block;
+                width: 30%;
+                background-color: darken($color: $color2, $amount: 10);
+                padding: 10px;
+                ul{
+                    flex-direction: column;
+                    align-items: flex-start;
+                }
+            }
+            div.icons {
+                width: 10%;
+            }
+
+            div.hamburger {
+                display: block;
+                i{
+                    color: $color3;
+                }
+            }
+        }
+    }
+}
+
+@media screen and (max-width: 576px) {
+    header {
+        div.header {
+            div.icons {
+                width: 20%;
+            }
+        }
+    }
+}
